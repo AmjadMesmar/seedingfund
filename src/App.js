@@ -1,24 +1,21 @@
-import React, { Component }  from 'react';
-import './App.css';
+import React from 'react';
+import './App.scss';
+import { Provider } from 'react-redux';
+import store from './store';
+import Signin from './components/Welcome/signin'
+// import RouterComponent from './Router';
 
-function App() {
+const App = () => {
+  // Import the page you are working on and comment the others to test
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // <Provider store={store} >
+    //   <RouterComponent />
+    // </Provider>
+    <React.Fragment>
+    <Signin/>
+    </React.Fragment>
   );
-}
+};
 
 export default App;

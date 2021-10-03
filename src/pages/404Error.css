@@ -1,0 +1,25 @@
+#error{
+    background-color: #eee;
+    height: 50%;
+    overflow: visible;
+    display: flex;
+    justify-content: space-around;
+}
+#Error{
+    position: relative;
+    left: 10px;
+    top: 0;
+    height:30em;
+}
+
+#E404{
+    position: relative;
+    top: 0em;
+    height: 20em;
+    margin-left: 100px;
+}
+
+#imgs img{
+    width: 30em;
+
+}

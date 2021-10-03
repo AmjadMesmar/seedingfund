@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Yaldevi:wght@300;500&display=swap');
+*,header,footer{
+  font-family: 'Yaldevi', sans-serif;
+}
+* {
+  box-sizing: border-box;
+}
+
+body{
+  width: 960px;
+  margin: auto;
+}
+
+#passowrdImage {
+  width: 30px;
+  height: 30px;
+}
+
+#body {
+  margin: auto;
+  width: 960px;
+  height: 660px;
+  background: url(../../images/WelcomeBG2.jpg);
+  background-repeat: no-repeat;
+  background-size: 1300px 650px;
+}
+
+
+
+@media (min-width:480px) and (max-width:776px) {
+    body{
+  width: 480PX;
+  margin: auto;
+  }
+  
+}
+
+@media (min-width:768px) and (max-width:960px) {
+
+  body{
+  
+    width: 960px;
+    margin: auto;
+  }
+  
+}
+
+  @media (min-width:961px) {
+
+    body
+    {
+      width: 960px;
+      margin: auto;
+    }
+    
+
+}

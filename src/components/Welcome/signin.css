@@ -11,18 +11,28 @@ body{
   margin: auto;
 }
 
-div{
-    background-color:red;
+#WelcomepassowrdImage {
+  width: 30px;
+  height: 30px;
 }
+
+#body {
+  margin: auto;
+  width: 960px;
+  height: 660px;
+  background: url(../../images/WelcomeBG2.jpg);
+  background-repeat: no-repeat;
+  background-size: 1300px 650px;
+}
+
+
 
 @media (min-width:480px) and (max-width:776px) {
     body{
   width: 480PX;
   margin: auto;
   }
-  div{
-    background-color:red;
-}
+  
 }
 
 @media (min-width:768px) and (max-width:960px) {
@@ -32,6 +42,7 @@ div{
     width: 960px;
     margin: auto;
   }
+  
 }
 
   @media (min-width:961px) {
@@ -41,5 +52,6 @@ div{
       width: 960px;
       margin: auto;
     }
+    
 
 }

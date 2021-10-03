@@ -76,28 +76,40 @@ const Signin = () => {
         <React.Fragment>
             <body>
                 <div id="body">
-                    <img src={"../images/large_seedingfund-01.png"}></img>
-                    <form>
-                        <input
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            placeholder="Email"
-                            type="email"
-                            className="loginInput"
-                        />
-                        <input
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            placeholder="Password"
-                            type="password"
-                            id="loginInput"
-                            className="loginInput"
-                        />
-                        <img id="WelcomepassowrdImage" src={ToggleEye} alt={'alt'} type="checkbox" onClick={showPassword} />
-                        <HexagonButton onClick={onSignin} className='loginButton'>
-                            {loading ? <Loader /> : 'Sign in'}
-                        </HexagonButton>
-                    </form>
+                    <img src={"../images/large_seedingfund-01.png"} alt={"alt"}></img>
+                    <div id="signinForm">
+                        <form>
+                            <input
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                placeholder="Email"
+                                required
+                                type="email"
+                                className="loginInput"
+                            />
+                            <input
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                placeholder="Password"
+                                required
+                                type="password"
+                                id="loginInput"
+                                className="loginInput"
+                            />
+                            <img id="passowrdImage" src={ToggleEye} alt={'alt'} type="checkbox" onClick={showPassword} />
+                            <HexagonButton onClick={onSignin} className='loginButton'>
+                                {loading ? <Loader /> : 'Sign in'}
+                            </HexagonButton>
+                        </form>
+                    </div>
+                    <div id="signup">
+                        <Link to='/signup'
+                        >
+                            <HexagonButton>
+                                Create a New Account
+                            </HexagonButton>
+                        </Link>
+                    </div>
                 </div>
             </body>
 

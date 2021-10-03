@@ -6,6 +6,7 @@ export const SIGNUP_URL = BASE_URL + 'auth/signup';
 export const SIGNOUT_URL = BASE_URL + 'auth/signout';
 export const REFRESH_URL = BASE_URL + 'auth/refresh';
 export const GET_ALL_USERS_URL = BASE_URL + 'auth/users';
+export const GET_USER_URL = BASE_URL + 'auth/user';
 export const UPDATE_PASSWORD_URL = BASE_URL + 'auth/user/password';
 
 

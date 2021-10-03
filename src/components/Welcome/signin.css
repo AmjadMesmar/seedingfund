@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yaldevi:wght@300;500&display=swap');
 *,header,footer{
-    font-family: 'Pacifico', cursive;
+  font-family: 'Yaldevi', sans-serif;
 }
 * {
   box-sizing: border-box;

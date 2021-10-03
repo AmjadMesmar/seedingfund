@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.scss';
 import { Provider } from 'react-redux';
-import Signin from './components/Welcome/signin'
 import RouterComponent from './Router';
 
 const App = () => {

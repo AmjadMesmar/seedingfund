@@ -15,7 +15,7 @@ import { tokenName } from '../../helpers';
 import { Link } from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
 
-const HexagonButton = styled(Button)({
+const MaterialButton = styled(Button)({
     background: "#529471",
     border: 0,
     borderRadius: 3,
@@ -97,17 +97,17 @@ const Signin = () => {
                                 className="loginInput"
                             />
                             <img id="passowrdImage" src={ToggleEye} alt={'alt'} type="checkbox" onClick={showPassword} />
-                            <HexagonButton onClick={onSignin} className='loginButton'>
+                            <MaterialButton onClick={onSignin} className='loginButton'>
                                 {loading ? <Loader /> : 'Sign in'}
-                            </HexagonButton>
+                            </MaterialButton>
                         </form>
                     </div>
                     <div id="signup">
                         <Link to='/signup'
                         >
-                            <HexagonButton>
+                            <MaterialButton>
                                 Create a New Account
-                            </HexagonButton>
+                            </MaterialButton>
                         </Link>
                     </div>
                 </div>

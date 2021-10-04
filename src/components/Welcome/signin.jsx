@@ -16,7 +16,7 @@ import { Link } from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
 
 const MaterialButton = styled(Button)({
-    background: "#529471",
+    background: "rgb(33, 170, 170)",
     border: 0,
     borderRadius: 3,
     color: "white",
@@ -24,7 +24,7 @@ const MaterialButton = styled(Button)({
     padding: "0 30px",
     "&:hover": {
         boxShadow: "rgba(0, 0, 0, 0.25) 2px 4px 6px 3px",
-        backgroundColor: "#529471",
+        backgroundColor: "rgb(71, 71, 191)",
     },
 });
 

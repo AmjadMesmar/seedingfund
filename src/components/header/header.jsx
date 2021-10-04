@@ -23,23 +23,20 @@ const MaterialButton = styled(Button)({
 
 const Header = () => {
 
-    const [adminButton, setAdminButton] = useState();
     const [token, setToken] = useState();
     const [results, reload, loading, error] = useAjax();
 
 
 
-    function showAllProjectsButton() {
+    function showAllProjectsButton(boolCheck) {
 
         let AdminButtonElement = document.getElementById('AdminButton');
 
-        if (adminButton) {
-            AdminButtonElement.style.display = "flex";
-            setAdminButton(true);
+
+        if (boolCheck === true) {
         }
         else {
             AdminButtonElement.style.display = "none";
-            setAdminButton(false);
         }
     }
 
@@ -53,12 +50,11 @@ const Header = () => {
               `${GET_USER_URL}`,
               config
             ).then(results => {
-                setAdminButton(results.data.user[0].is_admin)
-                console.log(results.data.user[0].is_admin);
-                showAllProjectsButton();
+                let adminValue = results.data.user[0].is_admin;
+                console.log("🚀 ~ file: header.jsx ~ line 57 ~ adminValue", adminValue)
+                console.log("results: ", results.data.user[0].is_admin);
+                showAllProjectsButton(adminValue);
             }).catch(error => {console.log (error)});
-            console.log("🚀 ~ file: header.jsx ~ line 60 ~ adminButton", adminButton)
-            console.log("🚀 ~ file: header.jsx ~ line 48 ~ token", token)
         })();
     };
 

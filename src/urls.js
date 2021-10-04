@@ -13,7 +13,7 @@ export const UPDATE_PASSWORD_URL = BASE_URL + 'auth/user/password';
 // Projects endpoints
 export const CREAT_GET_PROJECT_URL = BASE_URL + 'api/v1/projects/';
 export const USER_PROJECTS_URL = BASE_URL + 'api/v1/projects/user';
-export const GET_UPDATE_DELETE_PROJECTS_URL = BASE_URL + 'api/v1/projects/';
+export const GET_UPDATE_DELETE_PROJECTS_URL = BASE_URL + 'api/v1/projects';
 
 // router.post('/projects',createProjectHandler);
 // router.get('/projects',adminCheck,getAllProjecstHandler);

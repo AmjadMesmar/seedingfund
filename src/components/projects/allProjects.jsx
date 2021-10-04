@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './allProjects.css'
 import { useHistory } from 'react-router';
+import axios from 'axios';
 
 import Button from '@material-ui/core/Button';
 import { styled } from '@material-ui/core/styles';
@@ -32,22 +33,12 @@ const AllProjects = () => {
 
     const [allProjects, setAllProjects] = useState();
     const [results, reload, loading, error] = useAjax();
+    const [results2, reload2, loading2, error2] = useAjax();
+    const [results3, reload3, loading3, error3] = useAjax();
+
+
     const history = useHistory();
 
-
-
-
-    function showAllProjectsButton(boolCheck) {
-
-        let AdminButtonElement = document.getElementById('AdminButton');
-
-
-        if (boolCheck === true) {
-        }
-        else {
-            AdminButtonElement.style.display = "none";
-        }
-    }
 
     const getAllProjects = () => {
         (async () => {
@@ -56,16 +47,25 @@ const AllProjects = () => {
         })();
     };
 
-    const changeProjectStatus = (projectid,status) => {
-    console.log("🚀 ~ file: allProjects.jsx ~ line 60 ~ changeProjectStatus ~ status", status);
-    console.log("🚀 ~ file: allProjects.jsx ~ line 60 ~ changeProjectStatus ~ projectid", projectid);
+    const changeProjectStatus = (projectid, status) => {
         (async () => {
             const token = await getToken();
-            reload(`${GET_UPDATE_DELETE_PROJECTS_URL}/${projectid}`, 'put', { project_status: status }, token);
-            history.push('/projects/all');
+            reload2(`${GET_UPDATE_DELETE_PROJECTS_URL}/${projectid}`, 'put', { project_status: status }, token);
         })();
     };
 
+    const deleteProject = (projectid) => {
+        (async () => {
+            const token = await getToken();
+            // reload3(`${GET_UPDATE_DELETE_PROJECTS_URL}/${projectid}`, 'delete', null, token);
+            await axios.delete(`${GET_UPDATE_DELETE_PROJECTS_URL}/${projectid}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+        })();
+
+    };
 
     useEffect(() => {
         if (results) {
@@ -73,6 +73,20 @@ const AllProjects = () => {
             console.log("🚀 ~ file: home.jsx ~ line 50 ~ useEffect ~ results", results.data.allProjects)
         }
     }, [results]);
+
+    useEffect(() => {
+        if (results2) {
+            console.log("🚀 ~ file: allProjects.jsx ~ line 80 ~ useEffect ~ results2", results2)
+            window.location.reload();
+        }
+    }, [results2]);
+
+    // useEffect(() => {
+    //     if (results3) {
+    //         window.location.reload();
+    //     }
+    // }, [results3]);
+
     useEffect(() => {
         if (allProjects) {
             console.log('all projects: ', allProjects);
@@ -110,7 +124,7 @@ const AllProjects = () => {
                                     <option name="Education">ACCEPTED</option>
                                     <option name="Personal">REJECTED</option>
                                 </select></td>
-                                <td><MaterialButton>X</MaterialButton></td>
+                                {/* <td><MaterialButton onClick={deleteProject(ele.id)}>X</MaterialButton></td> */}
                             </tr>)
                     }) : null
                 }

@@ -91,7 +91,7 @@ const Home = () => {
                         placeholder="Sector"
                         fullWidth
                         >
-                        <option name="Busniness">Busniness</option>
+                        <option selected="selected" name="Busniness">Busniness</option>
                         <option name="Education">Education</option>
                         <option name="Personal">Personal</option>
                         <option name="Helping others"> Helping others</option>

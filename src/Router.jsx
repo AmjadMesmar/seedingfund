@@ -4,9 +4,10 @@ import { Route, Switch } from "react-router-dom";
 
 import Signin from "./components/Welcome/signin";
 import SignUp from "./components/Welcome/signup";
+import Home from "./components/home/home";
+import AllProjects from './components/projects/allProjects'
 import ChangePassword from "./components/password/changePassword";
 import Header from "./components/header/header";
-import Home from "./components/home/home";
 import Error from "./pages/404Error";
 
 const RouterComponent = () => {
@@ -20,11 +21,15 @@ const RouterComponent = () => {
           <SignUp />
         </Route>
         <Route exact path='/home'>
-      <Header />
+          <Header />
           <Home />
         </Route>
+        <Route exact path='/projects/all'>
+          <Header />
+          <AllProjects />
+        </Route>
         <Route exact path='/changepassword'>
-        <Header />
+          <Header />
           <ChangePassword />
         </Route>
         <Header />

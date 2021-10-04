@@ -66,6 +66,7 @@ const Signin = () => {
 
     useEffect(() => {
         if (results) {
+            console.log('results: ', results)
             localStorage.setItem(tokenName, JSON.stringify(results.data));
             setChecking(false);
             history.push('/home');

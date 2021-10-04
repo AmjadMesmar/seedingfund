@@ -6,6 +6,7 @@ import { styled } from '@material-ui/core/styles';
 import { getIfAdmin,getToken, signout } from '../../helpers'
 import {GET_USER_URL} from '../../urls'
 import useAjax from '../../hooks/useAjax';
+import Axios from 'axios';
 
 
 const MaterialButton = styled(Button)({
@@ -22,14 +23,13 @@ const MaterialButton = styled(Button)({
 
 const Header = () => {
 
-    const [adminButton, setAdminButton] = useState(false);
+    const [adminButton, setAdminButton] = useState();
     const [token, setToken] = useState();
     const [results, reload, loading, error] = useAjax();
 
-    getToken().then((results) => setToken(results));
 
 
-    function showAllProjectsButton(token) {
+    function showAllProjectsButton() {
 
         let AdminButtonElement = document.getElementById('AdminButton');
 
@@ -46,11 +46,25 @@ const Header = () => {
     const checkAdmin = () => {
         (async () => {
             const token = await getToken();
-            const isAdmin = await getIfAdmin();
-            console.log("🚀 ~ file: header.jsx ~ line 50 ~ isAdmin", isAdmin)
-             console.log("🚀 ~ file: header.jsx ~ line 51 ~ results", results)
+            const config = {
+                headers: { Authorization: `Bearer ${token}` }
+            };
+            Axios.get( 
+              `${GET_USER_URL}`,
+              config
+            ).then(results => {
+                setAdminButton(results.data.user[0].is_admin)
+                console.log(results.data.user[0].is_admin);
+                showAllProjectsButton();
+            }).catch(error => {console.log (error)});
+            console.log("🚀 ~ file: header.jsx ~ line 60 ~ adminButton", adminButton)
+            console.log("🚀 ~ file: header.jsx ~ line 48 ~ token", token)
         })();
     };
+
+    
+    
+
 
   useEffect(() => {
     (async () => {

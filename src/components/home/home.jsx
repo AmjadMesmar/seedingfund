@@ -73,6 +73,7 @@ const Home = () => {
     useEffect(() => {
         if (results) {
             window.location.reload();
+            // history.push('/home');
         }
     }, [results]);
 

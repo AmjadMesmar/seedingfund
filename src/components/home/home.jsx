@@ -81,9 +81,12 @@ const Home = () => {
 
     return (
         <React.Fragment>
-            <h3>{userName ? `Hello ${userName} !`: null}</h3>
+            <div id="body">
+                <div id='HomeContainer'>
+            <h2>{userName ? `Hello ${userName} !`: null}</h2>
+            <h2>Create a project</h2>
+            </div>
             <div id="createProjectForm">
-            <h3>Create a project</h3>
                 <form id="projectForm">
                     <input
                         onChange={(e) => setProjectName(e.target.value)}
@@ -118,10 +121,11 @@ const Home = () => {
                         <option name="Supporting">Supporting</option>
                         <option name="Donation">Donation</option>
                     </select>
-                    <MaterialButton onClick={onCreateProject} className='loginButton'>
+                    <MaterialButton id="createProjectButton" onClick={onCreateProject} className='loginButton'>
                         {loading ? <Loader /> : 'Create Project'}
                     </MaterialButton>
                 </form>
+            </div>
             </div>
         </React.Fragment>
     )

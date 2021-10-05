@@ -83,7 +83,8 @@ const AllProjects = () => {
                 }
             }).then(data => {
                 console.log("🚀 ~ file: allProjects.jsx ~ line 66 ~ data", data);
-                window.location.reload();
+                // window.location.reload();
+                history.push('../home');
             }).catch(err => console.log(err));
         })();
     };

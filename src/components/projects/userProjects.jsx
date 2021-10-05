@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import './allProjects.css'
 import { useHistory } from 'react-router';
@@ -57,34 +58,10 @@ const UserProjects = () => {
         { rejected: 'REJECTED', number: rejectedCount },
     ];
 
-    const history = useHistory();
-
-
     const getAllProjects = () => {
         (async () => {
             const token = await getToken();
             reload(USER_PROJECTS_URL, 'get', null, token, null)
-        })();
-    };
-
-    const changeProjectStatus = (projectid, status) => {
-        (async () => {
-            const token = await getToken();
-            reload2(`${GET_UPDATE_DELETE_PROJECTS_URL}/${projectid}`, 'put', { project_status: status }, token);
-        })();
-    };
-
-    const deleteProject = (projectid) => {
-        (async () => {
-            const token = await getToken();
-            axios.delete(`${GET_UPDATE_DELETE_PROJECTS_URL}/${projectid}`, {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            }).then(data => {
-                console.log("🚀 ~ file: allProjects.jsx ~ line 66 ~ data", data);
-                window.location.reload();
-            }).catch(err => console.log(err));
         })();
     };
 
@@ -98,13 +75,6 @@ const UserProjects = () => {
             setAllProjects(results.data.allProjects);
         }
     }, [results]);
-
-    useEffect(() => {
-        if (results2) {
-            // window.location.reload();
-            history.go(0);
-        }
-    }, [results2]);
 
     useEffect(() => {
         if (allProjects) {

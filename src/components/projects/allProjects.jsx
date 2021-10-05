@@ -101,7 +101,7 @@ const AllProjects = () => {
 
     useEffect(() => {
         if (results2) {
-            history.go(0);
+            history.push('../home');
             // window.location.reload();
         }
     }, [results2]);

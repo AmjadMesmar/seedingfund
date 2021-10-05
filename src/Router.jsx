@@ -10,6 +10,7 @@ import UserProjects from './components/projects/userProjects'
 import ChangePassword from "./components/password/changePassword";
 import Header from "./components/header/header";
 import Error from "./pages/404Error";
+import Contact from './pages/contact'
 
 const RouterComponent = () => {
   return (
@@ -33,9 +34,9 @@ const RouterComponent = () => {
           <Header />
           <UserProjects />
         </Route>
-        <Route exact path='/changepassword'>
+        <Route exact path='/contact'>
           <Header />
-          <ChangePassword />
+          <Contact />
         </Route>
         <Header />
         <Route path="*">

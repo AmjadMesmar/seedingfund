@@ -13,10 +13,11 @@ import Loader from '../loader/loader';
 import { SIGN_IN_URL } from '../../urls';
 import { tokenName } from '../../helpers';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import IconButton from '@material-ui/core/IconButton';
 
 const MaterialButton = styled(Button)({
-    background: "#529471",
+    background: "rgb(33, 170, 170)",
     border: 0,
     borderRadius: 3,
     color: "white",
@@ -24,7 +25,7 @@ const MaterialButton = styled(Button)({
     padding: "0 30px",
     "&:hover": {
         boxShadow: "rgba(0, 0, 0, 0.25) 2px 4px 6px 3px",
-        backgroundColor: "#529471",
+        backgroundColor: "rgb(71, 71, 191)",
     },
 });
 
@@ -35,16 +36,34 @@ const Signin = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [checking, setChecking] = useState(localStorage.getItem(tokenName));
+    const [signin, setSignIn] = useState();
 
     const [results, reload, loading, error, setError] = useAjax();
 
     const history = useHistory();
 
     const onSignin = () => {
-        reload(SIGN_IN_URL, 'post', null, null, {
-            username: email,
-            password: password,
-        })
+        console.log("email:",email," password:", password);
+        // reload(SIGN_IN_URL, 'post', null, null, {
+        //     username: email,
+        //     password: password,
+        // })
+
+        axios.post(SIGN_IN_URL,{}, {
+            auth:{
+                username: email,
+                password: password      
+            }
+          })
+          .then(data => {
+          console.log("🚀 ~ file: signin.jsx ~ line 58 ~ onSignin ~ data", data.data)
+          localStorage.setItem(tokenName, JSON.stringify(data.data));
+          setChecking(false);
+          history.push('/home');
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
     };
 
     function showPassword(e) {

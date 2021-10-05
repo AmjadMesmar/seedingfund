@@ -4,10 +4,13 @@ import { Route, Switch } from "react-router-dom";
 
 import Signin from "./components/Welcome/signin";
 import SignUp from "./components/Welcome/signup";
+import Home from "./components/home/home";
+import AllProjects from './components/projects/allProjects'
+import UserProjects from './components/projects/userProjects'
 import ChangePassword from "./components/password/changePassword";
 import Header from "./components/header/header";
-import Home from "./components/home/home";
 import Error from "./pages/404Error";
+import Contact from './pages/contact'
 
 const RouterComponent = () => {
   return (
@@ -20,12 +23,20 @@ const RouterComponent = () => {
           <SignUp />
         </Route>
         <Route exact path='/home'>
-      <Header />
+          <Header />
           <Home />
         </Route>
-        <Route exact path='/changepassword'>
-        <Header />
-          <ChangePassword />
+        <Route exact path='/projects/all'>
+          <Header />
+          <AllProjects />
+        </Route>
+        <Route exact path='/projects/user'>
+          <Header />
+          <UserProjects />
+        </Route>
+        <Route exact path='/contact'>
+          <Header />
+          <Contact />
         </Route>
         <Header />
         <Route path="*">

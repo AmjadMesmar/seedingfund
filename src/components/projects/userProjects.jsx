@@ -101,7 +101,8 @@ const UserProjects = () => {
 
     useEffect(() => {
         if (results2) {
-            window.location.reload();
+            // window.location.reload();
+            history.go(0);
         }
     }, [results2]);
 

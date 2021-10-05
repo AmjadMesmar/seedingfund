@@ -72,8 +72,10 @@ const Home = () => {
 
     useEffect(() => {
         if (results) {
-            window.location.reload();
-            // history.push('/home');
+            // window.location.reload();
+            let form = document.getElementById('projectForm');
+            form.reset();
+            history.push('/home');
         }
     }, [results]);
 
@@ -82,7 +84,7 @@ const Home = () => {
             <h3>{userName ? `Hello ${userName} !`: null}</h3>
             <div id="createProjectForm">
             <h3>Create a project</h3>
-                <form>
+                <form id="projectForm">
                     <input
                         onChange={(e) => setProjectName(e.target.value)}
                         required

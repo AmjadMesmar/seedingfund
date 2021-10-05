@@ -86,8 +86,11 @@ const SignUp = () => {
             <body>
                 <div id="body">
                     <img src={"../images/large_seedingfund-01.png"} alt={"alt"}></img>
-                    <div id="SignUpForm">
-                        <form>
+                    <div>
+                        <div id="signUpContainer">
+                            <h2>SIGN</h2><p>  </p> <h2>UP</h2>
+                        </div>
+                        <form id="SignUpForm">
                             <input
                                 onChange={(e) => setUserName(e.target.value)}
                                 autoComplete="fname"

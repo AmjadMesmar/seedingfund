@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Yaldevi:wght@300;500&display=swap');
+*,header,footer{
+  font-family: 'Yaldevi', sans-serif;
+}
 * {
   box-sizing: border-box;
 }
@@ -12,42 +16,187 @@ body{
   height: 30px;
 }
 
-/* #body {
+#body {
   margin: auto;
   width: 960px;
-  height: 660px;
-  background: url(../../images/WelcomeBG2.jpg);
+  height: 650px;
+  background: url(../../images/laptopBG.webp);
   background-repeat: no-repeat;
   background-size: 1300px 650px;
 }
- */
+
+#signUpContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content:center;
+  align-items: center;
+  margin-top:-2.5em;
+}
+
+#signUpContainer h2:first-child{
+  margin-right: .3em;
+  color: #0a9bc3;
+  text-shadow: black .3px .3px;
+}
+
+#signUpContainer h2:last-child{
+  color: #85c606;
+  text-shadow: black .3px .3px;
+}
+
+#SignUpForm{
+  display: flex;
+  flex-direction: column;
+  border: solid black 2px;
+  width: 25em;
+  margin:auto;
+  padding: 1em;
+  box-shadow: rgb(11, 157, 157) .2em .2em .2em;
+  margin-bottom: 1em;
+}
+
+#SignUpForm input{
+padding: .5em;
+margin: .5em;
+}
+
+#SignUpForm button{
+  width: 10em;
+  position: relative;
+  left: 8em;
+  }
+#passowrdImage{
+  position: relative;
+  bottom: 2.5em;
+  left: 20em;
+}
 
 
 @media (min-width:480px) and (max-width:776px) {
-    body{
-  width: 480PX;
-  margin: auto;
+  #body {
+    margin: auto;
+    width: 480px;
+    max-height: 660px;
+    background: url(../../images/laptopBG.webp);
+    background-repeat: no-repeat;
+    background-size: 480px 650px;
   }
+  
+  #signUpContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    align-items: center;  
+  }
+  
+  #signUpContainer h2:first-child{
+    margin-right: .3em;
+    color: #0a9bc3;
+    text-shadow: black .3px .3px;
+  }
+  
+  #signUpContainer h2:last-child{
+    color: #85c606;
+    text-shadow: black .3px .3px;
+  }
+  
+  #SignUpForm{
+    display: flex;
+    flex-direction: column;
+    border: solid black 2px;
+    width: 25em;
+    margin:auto;
+    padding: 1em;
+    box-shadow: rgb(11, 157, 157) .2em .2em .2em;
+    margin-bottom: 1em;
+  }
+  
+  #SignUpForm input{
+  padding: .5em;
+  margin: .5em;
+  }
+  
+  #SignUpForm button{
+    width: 10em;
+    position: relative;
+    left: 8em;
+    }
+  #passowrdImage{
+    position: relative;
+    bottom: 2.5em;
+    left: 20em;
+  }
+  
   
 }
 
 @media (min-width:768px) and (max-width:960px) {
 
-  body{
-  
-    width: 960px;
-    margin: auto;
+  #body {
+  margin: auto;
+  width: 768px;
+  height: 660px;
+  background: url(../../images/laptopBG.webp);
+  background-repeat: no-repeat;
+  background-size: 700px 650px;
+}
+
+#signUpContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content:center;
+  align-items: center;  
+}
+
+#signUpContainer h2:first-child{
+  margin-right: .3em;
+  color: #0a9bc3;
+  text-shadow: black .3px .3px;
+}
+
+#signUpContainer h2:last-child{
+  color: #85c606;
+  text-shadow: black .3px .3px;
+}
+
+#SignUpForm{
+  display: flex;
+  flex-direction: column;
+  border: solid black 2px;
+  width: 25em;
+  margin:auto;
+  padding: 1em;
+  box-shadow: rgb(11, 157, 157) .2em .2em .2em;
+  margin-bottom: 1em;
+}
+
+#SignUpForm input{
+padding: .5em;
+margin: .5em;
+}
+
+#SignUpForm button{
+  width: 10em;
+  position: relative;
+  left: 8em;
   }
+#passowrdImage{
+  position: relative;
+  bottom: 2.5em;
+  left: 20em;
+}
+
   
 }
 
   @media (min-width:961px) {
 
-    body
+    #body
     {
       width: 960px;
       margin: auto;
     }
+
     
 
 }

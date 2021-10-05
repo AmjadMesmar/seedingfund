@@ -19,7 +19,7 @@ body{
 #body {
   margin: auto;
   width: 960px;
-  height: 660px;
+  height: 650px;
   background: url(../../images/laptopBG.webp);
   background-repeat: no-repeat;
   background-size: 1300px 650px;
@@ -75,7 +75,7 @@ margin: .5em;
   #body {
     margin: auto;
     width: 480px;
-    height: 660px;
+    max-height: 660px;
     background: url(../../images/laptopBG.webp);
     background-repeat: no-repeat;
     background-size: 480px 650px;

@@ -12,7 +12,7 @@ body{
   height: 30px;
 }
 
-#body {
+/* #body {
   margin: auto;
   width: 960px;
   height: 660px;
@@ -20,7 +20,7 @@ body{
   background-repeat: no-repeat;
   background-size: 1300px 650px;
 }
-
+ */
 
 
 @media (min-width:480px) and (max-width:776px) {

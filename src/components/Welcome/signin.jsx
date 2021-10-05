@@ -14,7 +14,6 @@ import { SIGN_IN_URL } from '../../urls';
 import { tokenName } from '../../helpers';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import IconButton from '@material-ui/core/IconButton';
 
 const MaterialButton = styled(Button)({
     background: "rgb(33, 170, 170)",
@@ -43,12 +42,6 @@ const Signin = () => {
     const history = useHistory();
 
     const onSignin = () => {
-        console.log("email:",email," password:", password);
-        // reload(SIGN_IN_URL, 'post', null, null, {
-        //     username: email,
-        //     password: password,
-        // })
-
         axios.post(SIGN_IN_URL,{}, {
             auth:{
                 username: email,
@@ -56,7 +49,6 @@ const Signin = () => {
             }
           })
           .then(data => {
-          console.log("🚀 ~ file: signin.jsx ~ line 58 ~ onSignin ~ data", data.data)
           localStorage.setItem(tokenName, JSON.stringify(data.data));
           setChecking(false);
           history.push('/home');
@@ -85,7 +77,6 @@ const Signin = () => {
 
     useEffect(() => {
         if (results) {
-            console.log('results: ', results)
             localStorage.setItem(tokenName, JSON.stringify(results.data));
             setChecking(false);
             history.push('/home');
@@ -97,8 +88,11 @@ const Signin = () => {
             <body>
                 <div id="body">
                     <img src={"../images/large_seedingfund-01.png"} alt={"alt"}></img>
-                    <div id="signinForm">
-                        <form>
+                    <div id="motoContainer">
+                    <h2>You ask it</h2><p>  </p> <h2>we fund it!</h2>
+                    </div>
+                    <div id="formContainer">
+                        <form id="signinForm">
                             <input
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}

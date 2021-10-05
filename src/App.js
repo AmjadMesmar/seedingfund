@@ -1,6 +1,4 @@
 import React from 'react';
-import './App.scss';
-import { Provider } from 'react-redux';
 import RouterComponent from './Router';
 
 const App = () => {
@@ -8,7 +6,6 @@ const App = () => {
 
   return (
       <RouterComponent />
-    // </Provider>
   );
 };
 

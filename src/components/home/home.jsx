@@ -34,7 +34,7 @@ const Home = () => {
 
     const [projectName, setProjectName] = useState('');
     const [projectDescription, setProjectDescription] = useState('');
-    const [projectSector, serProjectSector] = useState('');
+    const [projectSector, setProjectSector] = useState('Business');
     const [results, reload, loading, error, setError] = useAjax();
     const history = useHistory();
 
@@ -84,7 +84,7 @@ const Home = () => {
                         rows="4"
                     />
                     <select 
-                        onChange={(e) => serProjectSector(e.target.value)}
+                        onChange={(e) => setProjectSector(e.target.value)}
                         required
                         name="project_sector"
                         label="project_sector"

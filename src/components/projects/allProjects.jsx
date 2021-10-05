@@ -34,7 +34,6 @@ const AllProjects = () => {
     const [allProjects, setAllProjects] = useState();
     const [results, reload, loading, error] = useAjax();
     const [results2, reload2, loading2, error2] = useAjax();
-    const [results3, reload3, loading3, error3] = useAjax();
 
 
     const history = useHistory();
@@ -58,13 +57,15 @@ const AllProjects = () => {
         (async () => {
             const token = await getToken();
             // reload3(`${GET_UPDATE_DELETE_PROJECTS_URL}/${projectid}`, 'delete', null, token);
-            await axios.delete(`${GET_UPDATE_DELETE_PROJECTS_URL}/${projectid}`, {
+            axios.delete(`${GET_UPDATE_DELETE_PROJECTS_URL}/${projectid}`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
-            });
+            }).then(data => {
+            console.log("🚀 ~ file: allProjects.jsx ~ line 66 ~ data", data);
+            window.location.reload();
+            }).catch(err => console.log(err));
         })();
-
     };
 
     useEffect(() => {
@@ -80,12 +81,6 @@ const AllProjects = () => {
             window.location.reload();
         }
     }, [results2]);
-
-    // useEffect(() => {
-    //     if (results3) {
-    //         window.location.reload();
-    //     }
-    // }, [results3]);
 
     useEffect(() => {
         if (allProjects) {
@@ -120,11 +115,11 @@ const AllProjects = () => {
                                 <td>{ele.project_status}</td>
                                 <td><select
                                     onChange={(e) => changeProjectStatus(ele.id, e.target.value)}>
-                                    <option name="Busniness">PENDING</option>
-                                    <option name="Education">ACCEPTED</option>
-                                    <option name="Personal">REJECTED</option>
+                                    <option name="PENDING">PENDING</option>
+                                    <option name="ACCEPTED">ACCEPTED</option>
+                                    <option name="REJECTED">REJECTED</option>
                                 </select></td>
-                                {/* <td><MaterialButton onClick={deleteProject(ele.id)}>X</MaterialButton></td> */}
+                                <td><MaterialButton type="submit" onClick={() => {deleteProject(ele.id)}}>X</MaterialButton></td>
                             </tr>)
                     }) : null
                 }

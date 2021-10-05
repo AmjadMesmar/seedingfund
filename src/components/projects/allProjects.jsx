@@ -14,6 +14,18 @@ import { Link } from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
 import { getToken } from '../../helpers'
 
+// Importing chart:
+
+import Paper from '@material-ui/core/Paper';
+import {
+    Chart,
+    BarSeries,
+    Title,
+    ArgumentAxis,
+    ValueAxis,
+} from '@devexpress/dx-react-chart-material-ui';
+import { Animation } from '@devexpress/dx-react-chart';
+
 
 
 
@@ -29,12 +41,21 @@ const MaterialButton = styled(Button)({
         backgroundColor: "rgb(71, 71, 191)",
     },
 });
+
+
 const AllProjects = () => {
 
     const [allProjects, setAllProjects] = useState();
+    const [pendingCount, setPendingCount] = useState(0);
+    const [acceptedCount, setAcceptedCount] = useState(0);
+    const [rejectedCount, setRejectedCount] = useState(0);
     const [results, reload, loading, error] = useAjax();
     const [results2, reload2, loading2, error2] = useAjax();
-
+    const data = [
+        { pending: 'PENDING', number: pendingCount },
+        { accepted: 'ACCEPTED', number: acceptedCount },
+        { rejected: 'REJECTED', number: rejectedCount },
+    ];
 
     const history = useHistory();
 
@@ -56,28 +77,30 @@ const AllProjects = () => {
     const deleteProject = (projectid) => {
         (async () => {
             const token = await getToken();
-            // reload3(`${GET_UPDATE_DELETE_PROJECTS_URL}/${projectid}`, 'delete', null, token);
             axios.delete(`${GET_UPDATE_DELETE_PROJECTS_URL}/${projectid}`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             }).then(data => {
-            console.log("🚀 ~ file: allProjects.jsx ~ line 66 ~ data", data);
-            window.location.reload();
+                console.log("🚀 ~ file: allProjects.jsx ~ line 66 ~ data", data);
+                window.location.reload();
             }).catch(err => console.log(err));
         })();
     };
 
     useEffect(() => {
         if (results) {
+            results.data.allProjects.map(element => {
+                if (element.project_status === 'PENDING') setPendingCount(pendingCount => pendingCount + 1);
+                if (element.project_status === 'ACCEPTED') setAcceptedCount(acceptedCount => acceptedCount + 1);
+                if (element.project_status === 'REJECTED') setRejectedCount(rejectedCount => rejectedCount + 1);
+            })
             setAllProjects(results.data.allProjects);
-            console.log("🚀 ~ file: home.jsx ~ line 50 ~ useEffect ~ results", results.data.allProjects)
         }
     }, [results]);
 
     useEffect(() => {
         if (results2) {
-            console.log("🚀 ~ file: allProjects.jsx ~ line 80 ~ useEffect ~ results2", results2)
             window.location.reload();
         }
     }, [results2]);
@@ -95,34 +118,66 @@ const AllProjects = () => {
     }, []);
 
     return (
+
         <React.Fragment>
+            <Paper>
+                <Chart
+                // width ="500"
+                    data={data}
+                >
+                    <ArgumentAxis />
+                    <ValueAxis max={allProjects ? allProjects.length : 0} />
+
+                    <BarSeries
+                        valueField="number"
+                        argumentField="accepted"
+                        color="#00c9a7"
+                    />
+                    <BarSeries
+                        valueField="number"
+                        argumentField="pending"
+                        color="#ffc75f"
+                    />
+                    <BarSeries
+                        valueField="number"
+                        argumentField="rejected"
+                        color="#ff8066"
+                    />
+                    <Title text="All Projects' Status" />
+                    <Animation />
+                </Chart>
+            </Paper>
+            <h2>Projects Number: {allProjects ? allProjects.length : 0}</h2>
             <table id="allProjectsForm">
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Sector</th>
-                    <th>Status</th>
-                    <th>Acc/Rej</th>
-                    <th>Delete</th>
-                </tr>
-                {
-                    allProjects ? allProjects.map((ele, idx) => {
-                        return (
-                            <tr key={ele.id}>
-                                <td>{ele.project_name}</td>
-                                <td>{ele.project_description}</td>
-                                <td>{ele.project_sector}</td>
-                                <td>{ele.project_status}</td>
-                                <td><select
-                                    onChange={(e) => changeProjectStatus(ele.id, e.target.value)}>
-                                    <option name="PENDING">PENDING</option>
-                                    <option name="ACCEPTED">ACCEPTED</option>
-                                    <option name="REJECTED">REJECTED</option>
-                                </select></td>
-                                <td><MaterialButton type="submit" onClick={() => {deleteProject(ele.id)}}>X</MaterialButton></td>
-                            </tr>)
-                    }) : null
-                }
+                <tbody>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Sector</th>
+                        <th>Status</th>
+                        <th>Acc/Rej</th>
+                        <th>Delete</th>
+                    </tr>
+                    {
+                        allProjects ? allProjects.map((ele, idx) => {
+                            return (
+                                <tr key={ele.id}>
+                                    <td>{ele.project_name}</td>
+                                    <td className="projectDescription">{ele.project_description}</td>
+                                    <td>{ele.project_sector}</td>
+                                    <td>{ele.project_status}</td>
+                                    <td><select
+                                        onChange={(e) => changeProjectStatus(ele.id, e.target.value)}>
+                                        <option name="SELECT">Select</option>
+                                        <option name="PENDING">PENDING</option>
+                                        <option name="ACCEPTED">ACCEPTED</option>
+                                        <option name="REJECTED">REJECTED</option>
+                                    </select></td>
+                                    <td><MaterialButton type="submit" onClick={() => { deleteProject(ele.id) }}>X</MaterialButton></td>
+                                </tr>)
+                        }) : null
+                    }
+                </tbody>
             </table>
         </React.Fragment>
     )

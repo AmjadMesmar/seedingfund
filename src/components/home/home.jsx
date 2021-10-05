@@ -78,8 +78,7 @@ const Home = () => {
                         id="Description"
                         placeholder="Description"
                         label="Description"
-                        fullWidth
-                        maxlength="500"
+                        maxLength="500"
                         cols="10"
                         rows="4"
                     />
@@ -89,9 +88,8 @@ const Home = () => {
                         name="project_sector"
                         label="project_sector"
                         placeholder="Sector"
-                        fullWidth
                         >
-                        <option selected="selected" name="Busniness">Busniness</option>
+                        <option name="Busniness">Busniness</option>
                         <option name="Education">Education</option>
                         <option name="Personal">Personal</option>
                         <option name="Helping others"> Helping others</option>

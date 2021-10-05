@@ -52,8 +52,6 @@ const Header = () => {
                 config
             ).then(results => {
                 let adminValue = results.data.user[0].is_admin;
-                console.log("🚀 ~ file: header.jsx ~ line 57 ~ adminValue", adminValue)
-                console.log("results: ", results.data.user[0].is_admin);
                 showAllProjectsButton(adminValue);
             }).catch(error => { console.log(error) });
         })();

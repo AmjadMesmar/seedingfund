@@ -8,7 +8,7 @@ import { styled } from '@material-ui/core/styles';
 
 import useAjax from '../../hooks/useAjax';
 import Loader from '../loader/loader';
-import { CREAT_GET_PROJECT_URL } from '../../urls';
+import { CREAT_GET_PROJECT_URL,GET_USER_URL } from '../../urls';
 import { tokenName } from '../../helpers';
 import { Link } from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
@@ -34,8 +34,10 @@ const Home = () => {
 
     const [projectName, setProjectName] = useState('');
     const [projectDescription, setProjectDescription] = useState('');
+    const [userName, setUserName] = useState();
     const [projectSector, setProjectSector] = useState('Business');
     const [results, reload, loading, error, setError] = useAjax();
+    const [results2, reload2, loading2, error2, setError2] = useAjax();
     const history = useHistory();
 
 
@@ -50,16 +52,33 @@ const Home = () => {
         })();
         };
 
+        const getUserName = () => {
+            (async () => {
+                const token = await getToken();
+                reload2(GET_USER_URL, 'get', null, token, null)
+            })();
+        };
+
+
+        useEffect(() => {
+            getUserName();
+        }, []);
+        
+        useEffect(() => {
+            if (results2) {
+                setUserName(results2.data.user[0].user_name);
+            }
+        }, [results2]);
+
     useEffect(() => {
         if (results) {
-            console.log("🚀 ~ file: home.jsx ~ line 50 ~ useEffect ~ results", results)
             window.location.reload();
-            history.push('/home');
         }
     }, [results]);
 
     return (
         <React.Fragment>
+            <h3>{userName ? `Hello ${userName} !`: null}</h3>
             <div id="createProjectForm">
             <h3>Create a project</h3>
                 <form>

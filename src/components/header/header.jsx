@@ -84,7 +84,7 @@ const Header = () => {
                             All Projects
                         </MaterialButton>
                     </Link>
-                    <Link to='/'>
+                    <Link to='/projects/user'>
                         <MaterialButton>
                             Your Projects
                         </MaterialButton>

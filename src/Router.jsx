@@ -6,6 +6,7 @@ import Signin from "./components/Welcome/signin";
 import SignUp from "./components/Welcome/signup";
 import Home from "./components/home/home";
 import AllProjects from './components/projects/allProjects'
+import UserProjects from './components/projects/userProjects'
 import ChangePassword from "./components/password/changePassword";
 import Header from "./components/header/header";
 import Error from "./pages/404Error";
@@ -27,6 +28,10 @@ const RouterComponent = () => {
         <Route exact path='/projects/all'>
           <Header />
           <AllProjects />
+        </Route>
+        <Route exact path='/projects/user'>
+          <Header />
+          <UserProjects />
         </Route>
         <Route exact path='/changepassword'>
           <Header />

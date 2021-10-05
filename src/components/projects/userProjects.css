@@ -1,0 +1,41 @@
+#userProjectsTable{
+    margin:auto;
+    border: black solid 1px;
+    border-radius: 1em;
+    margin-bottom: 2em;
+    padding: .5em;
+}
+
+#userProjectsTable td{
+    border: black solid 1px;
+    padding: .5em;
+    margin: 1em;
+
+}
+
+#userProjectsTable th{
+    border-bottom: black solid 1px;
+}
+
+.projectDescription {
+    display: block;
+    overflow: scroll;
+    max-height: 4em;
+    
+}
+
+.projectNumbersContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    align-items: center;  
+  }
+  
+  .projectNumbersContainer h2:first-child{
+    margin-right: .7em;
+    color: #0a9bc3;
+  }
+  
+  .projectNumbersContainer h2:last-child{
+    color: #85c606;
+  }

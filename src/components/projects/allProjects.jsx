@@ -145,12 +145,14 @@ const AllProjects = () => {
                         argumentField="rejected"
                         color="#ff8066"
                     />
-                    <Title text="All Projects' Status" />
+                    <Title text="AlL PROJECTS' STATUS" />
                     <Animation />
                 </Chart>
             </Paper>
-            <h2>Projects Number: {allProjects ? allProjects.length : 0}</h2>
-            <table id="allProjectsForm">
+            <div className="projectNumbersContainer">
+            <h2>PROJECTS NUMBER:</h2> <h2>{allProjects ? allProjects.length : 0}</h2>
+            </div>
+            <table id="allProjectsTable">
                 <tbody>
                     <tr>
                         <th>Name</th>

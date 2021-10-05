@@ -113,6 +113,7 @@ const Home = () => {
                         name="project_sector"
                         label="project_sector"
                         placeholder="Sector"
+                        id="projectSelect"
                         >
                         <option name="Busniness">Busniness</option>
                         <option name="Education">Education</option>

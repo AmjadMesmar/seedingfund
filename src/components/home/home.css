@@ -10,7 +10,7 @@ body{
   width: 960px;
   margin: auto;
 }
-select {
+#projectSelect {
  padding:.5em;
  margin: 0.5em auto;
  width: 22em;

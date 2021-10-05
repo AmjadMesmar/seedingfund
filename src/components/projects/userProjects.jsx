@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
-import './allProjects.css'
+import './userProjects.css'
 import { useHistory } from 'react-router';
 import axios from 'axios';
 
@@ -93,7 +93,7 @@ const UserProjects = () => {
         <React.Fragment>
             <Paper>
                 <Chart
-                // width ="500"
+                    // width ="500"
                     data={data}
                 >
                     <ArgumentAxis />
@@ -114,12 +114,14 @@ const UserProjects = () => {
                         argumentField="rejected"
                         color="#ff8066"
                     />
-                    <Title text="Your Projects' Status" />
+                    <Title text="YOUR PROJECT'S STATUS" />
                     <Animation />
                 </Chart>
             </Paper>
-            <h2>Projects Number: {allProjects ? allProjects.length : 0}</h2>
-            <table id="allProjectsForm">
+            <div className="projectNumbersContainer">
+                <h2>PROJECTS NUMBER:</h2> <h2>{allProjects ? allProjects.length : 0}</h2>
+            </div>
+            <table id="userProjectsTable">
                 <tbody>
                     <tr>
                         <th>Name</th>
